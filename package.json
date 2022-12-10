@@ -6,7 +6,7 @@
   "type": "module",
   "bin": "./index.js",
   "scripts": {
-    "start": "ts-node-dev --respawn index.ts"
+    "start": ""
   },
   "keywords": [],
   "author": "",

@@ -1,12 +1,9 @@
 #! /usr/bin/env node
 import inquirer from "inquirer";
 
-interface userDetailsType {
-  accountNumber: number;
-  accountPassword: number;
+function getRandomNumber() {
+  return Math.floor(Math.random() * 100000) + 1;
 }
-
-const userDetails: userDetailsType = {} as userDetailsType;
 
 async function main() {
   console.log("Signup with your account");
@@ -25,12 +22,48 @@ async function main() {
     },
   ]);
 
-  userDetails.accountNumber = userResponse.accountNumber;
-  userDetails.accountPassword = userResponse.accountNumber;
-
   generateAccountData();
 }
 
-function generateAccountData() {}
+async function generateAccountData() {
+  const accountBalance = getRandomNumber();
+
+  console.log(`
+    1. Check account balance.
+    2. Withdraw cash.
+    3. Deposit cash.
+    4. Exit.
+  `);
+
+  while (true) {
+    const { option } = await inquirer.prompt({
+      message: "Select an option",
+      type: "number",
+      name: "option",
+    });
+
+    if (option === 1) {
+      console.log(`Account Balance: ${accountBalance}`);
+    } else if (option === 2) {
+      const { option } = await inquirer.prompt({
+        message: "How much do you want to withdraw?",
+        type: "number",
+        name: "option",
+      });
+
+      console.log(`New account balance is ${accountBalance - option}`);
+    } else if (option === 3) {
+      const { option } = await inquirer.prompt({
+        message: "How much do you want to withdraw?",
+        type: "number",
+        name: "option",
+      });
+
+      console.log(`New account balance is ${accountBalance + option}`);
+    } else {
+      break;
+    }
+  }
+}
 
 main();

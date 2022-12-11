@@ -6,16 +6,19 @@
   "type": "module",
   "bin": "./index.js",
   "scripts": {
-    "start": ""
+    "start": "nodemon ./index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^9.1.4"
+    "inquirer": "^9.1.4",
+    "uninstall": "^0.0.0"
   },
   "devDependencies": {
     "@types/inquirer": "^9.0.3",
-    "@types/node": "^18.11.12"
+    "@types/node": "^18.11.12",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1"
   }
 }
